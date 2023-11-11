@@ -34,12 +34,10 @@ public class Robot extends TimedRobot {
   private final DifferentialDrive m_robotDrive = new DifferentialDrive(m_leftDrive, m_rightDrive);
   private final XboxController m_controller = new XboxController(0);
   private final Timer m_timer = new Timer();
-  private final DigitalInput digitalinput = new DigitalInput(4);
   private final DigitalOutput digitaloutput0 = new DigitalOutput(0);
   private final DigitalOutput digitaloutput1 = new DigitalOutput(1);
   private final DigitalOutput digitaloutput2 = new DigitalOutput(2);
   private final DigitalOutput digitaloutput3 = new DigitalOutput(3);
-  private final VictorSPX fan = new VictorSPX(1);
   private final SendableChooser<Boolean> cmdchsr = new SendableChooser<>();
   boolean input = false;
   int count = 0;
@@ -85,11 +83,9 @@ public class Robot extends TimedRobot {
 
     cmdchsr.setDefaultOption("false", false);
     cmdchsr.addOption("true", true);
-    SmartDashboard.putBoolean("switch", digitalinput.get());
     SmartDashboard.putData("lights", cmdchsr);
     input = cmdchsr.getSelected();
     SmartDashboard.putBoolean("input", input);
-    //fan.set(ControlMode.PercentOutput, 1);
     if (!input) {
       digitaloutput0.set(false);
       digitaloutput1.set(false);
@@ -105,7 +101,6 @@ public class Robot extends TimedRobot {
     if (input) {
       input = cmdchsr.getSelected();
       SmartDashboard.putBoolean("input", input);
-      //fan.set(ControlMode.PercentOutput, 1);
       count += 1;
       if(count % 10 <= 5){
         digitaloutput0.set(true);
