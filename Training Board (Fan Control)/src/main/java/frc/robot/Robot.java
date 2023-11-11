@@ -45,7 +45,7 @@ public class Robot extends TimedRobot {
   boolean faninvert = false;
   double speed = 0;
   int count = 0;
-  //ashduihauduwa
+  
   /**
    * This function is run when the robot is first started up and should be used for any
    * initialization code.
