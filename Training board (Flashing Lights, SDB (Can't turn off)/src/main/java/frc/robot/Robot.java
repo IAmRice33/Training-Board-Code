@@ -53,7 +53,7 @@ public class Robot extends TimedRobot {
     // result in both sides moving forward. Depending on how your robot's
     // gearbox is constructed, you might have to invert the left side instead.
     m_rightDrive.setInverted(true);
-    SmartDashboard.putBoolean("input", false);
+    SmartDashboard.putBoolean("input", input);
   }
 
   /** This function is run once each time the robot enters autonomous mode. */
@@ -85,7 +85,6 @@ public class Robot extends TimedRobot {
 
     cmdchsr.setDefaultOption("false", false);
     cmdchsr.addOption("true", true);
-    SmartDashboard.putBoolean("switch", digitalinput.get());
     SmartDashboard.putData("lights", cmdchsr);
     input = cmdchsr.getSelected();
 
